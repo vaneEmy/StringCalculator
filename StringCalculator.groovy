@@ -10,12 +10,21 @@ class stringCalculator extends GroovyTestCase{
 		int resultado = obj.add("")
 		assert resultado == 0
 	}
+	void testOneNumber(){
+		Calculator obj = new  Calculator()
+		int res = obj.add("1")
+		assert res == 1	
+		res = obj.add("7")
+		assert res == 7
+	}
 }
 
 class Calculator{
 	int add (String numbers){
 		if(!numbers){
 			0
+		}else{
+			numbers.toInteger()
 		}
 	}
 }
