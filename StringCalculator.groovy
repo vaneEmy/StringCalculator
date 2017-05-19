@@ -17,6 +17,8 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("7")
 		assert res == 7
 	}
+
+
 	void testTwoNumbers(){
 		Calculator obj = new  Calculator()
 		int res = obj.add("5,3")
@@ -30,6 +32,15 @@ class stringCalculator extends GroovyTestCase{
 		assert res == 12	
 		res = obj.add("9,4,7")
 		assert res == 20	
+	}
+	void testAnyNumbers(){
+		Calculator obj = new  Calculator()
+		int res = obj.add("5,3,3,2,1")
+		assert res == 14	
+		res = obj.add("2,4")
+		assert res == 6
+		res = obj.add("3,7,0,4")
+		assert res == 14
 	}
 	 
 }
