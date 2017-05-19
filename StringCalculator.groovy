@@ -42,6 +42,13 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("3,7,0,4")
 		assert res == 14
 	}
+	void testNewLineBetweenNumbers(){
+		Calculator obj = new  Calculator()
+		int res = obj.add("1\n2,3")
+		assert res == 6	
+		res = obj.add("12\n3")
+		assert res == 15
+	}
 	 
 }
 
@@ -50,8 +57,9 @@ class Calculator{
 		if(!numbers){
 			0
 		}else{
+			def pattern = '\n|,'
 			def values = []
-			values = numbers.split(",")
+			values = numbers.split(pattern)
 			int sum = 0  	
 			for(element in values) {
 				sum += element.toInteger()
