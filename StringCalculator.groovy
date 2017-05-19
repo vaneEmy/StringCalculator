@@ -24,6 +24,14 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("9,4")
 		assert res == 13	
 	}
+	void testThreeNumbers(){
+		Calculator obj = new  Calculator()
+		int res = obj.add("5,3,4")
+		assert res == 12	
+		res = obj.add("9,4,7")
+		assert res == 20	
+	}
+	 
 }
 
 class Calculator{
