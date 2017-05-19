@@ -57,9 +57,9 @@ class Calculator{
 		if(!numbers){
 			0
 		}else{
-			def pattern = '\n|,'
+			def pattern = '//\n|,'
 			def values = []
-			values = numbers.split(pattern)
+			values = s.split(pattern)
 			int sum = 0  	
 			for(element in values) {
 				sum += element.toInteger()
