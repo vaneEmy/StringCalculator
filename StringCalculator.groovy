@@ -1,16 +1,16 @@
 class stringCalculator extends GroovyTestCase{
 
-	void testNull(){
+	void testStringIsNull(){
 		Calculator obj = new Calculator()
 		int res = obj.add(null)
 		assert res ==0
 	}
-	void testEmpty() {
+	void testStringIsEmpty() {
 		Calculator obj = new  Calculator()
 		int resultado = obj.add("")
 		assert resultado == 0
 	}
-	void testOneNumber(){
+	void testStringHasOneNumber(){
 		Calculator obj = new  Calculator()
 		int res = obj.add("1")
 		assert res == 1	
@@ -19,21 +19,21 @@ class stringCalculator extends GroovyTestCase{
 	}
 
 
-	void testTwoNumbers(){
+	void testStringHasTwoNumbers(){
 		Calculator obj = new  Calculator()
 		int res = obj.add("5,3")
 		assert res == 8	
 		res = obj.add("9,4")
 		assert res == 13	
 	}
-	void testThreeNumbers(){
+	void testStringHasThreeNumbers(){
 		Calculator obj = new  Calculator()
 		int res = obj.add("5,3,4")
 		assert res == 12	
 		res = obj.add("9,4,7")
 		assert res == 20	
 	}
-	void testAnyNumbers(){
+	void testStringHasAnyQuantityNumbers(){
 		Calculator obj = new  Calculator()
 		int res = obj.add("5,3,3,2,1")
 		assert res == 14	
@@ -42,7 +42,7 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("3,7,0,4")
 		assert res == 14
 	}
-	void testNewLineBetweenNumbers(){
+	void testStringHasNewLineBetweenTheNumbers(){
 		Calculator obj = new  Calculator()
 		int res = obj.add("1\n2,3")
 		assert res == 6	
