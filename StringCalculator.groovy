@@ -49,6 +49,11 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("12\n3")
 		assert res == 15
 	}
+	void testSeparateLineWithOneDelimiter(){
+		Calculator obj = new Calculator()
+		int res = obj.add("//;\n1;2")
+		assert res == 3
+	}
 	 
 }
 
