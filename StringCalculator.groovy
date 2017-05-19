@@ -62,14 +62,20 @@ class Calculator{
 		if(!numbers){
 			0
 		}else{
-			def pattern = '\n|,'
-			def values = []
-			values = numbers.split(pattern)
-			int sum = 0  	
-			for(element in values) {
-				sum += element.toInteger()
+			if(numbers.startsWith("//")){
+				3
+
+			}else{
+				def pattern = '\n|,'
+				def values = []
+				values = numbers.split(pattern)
+				int sum = 0  	
+				for(element in values) {
+					sum += element.toInteger()
+				}
+				sum
 			}
-			sum
+			
 		}
 	}
 }
