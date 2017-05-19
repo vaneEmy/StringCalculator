@@ -17,6 +17,13 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("7")
 		assert res == 7
 	}
+	void testTwoNumbers(){
+		Calculator obj = new  Calculator()
+		int res = obj.add("5,3")
+		assert res == 8	
+		res = obj.add("9,4")
+		assert res == 13	
+	}
 }
 
 class Calculator{
@@ -24,7 +31,13 @@ class Calculator{
 		if(!numbers){
 			0
 		}else{
-			numbers.toInteger()
+			def values = []
+			values = numbers.split(",")
+			int sum = 0  	
+			for(element in values) {
+				sum += element.toInteger()
+			}
+			sum
 		}
 	}
 }
