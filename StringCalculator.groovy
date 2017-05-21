@@ -17,8 +17,6 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("7")
 		assert res == 7
 	}
-
-
 	void testStringHasTwoNumbers(){
 		Calculator obj = new  Calculator()
 		int res = obj.add("5,3")
@@ -65,24 +63,21 @@ class Calculator{
 			0
 		}else{
 			if(numbers.startsWith("//")){
-				def re = '\\D'	
 				def newNumbers = numbers.replaceAll('//[\\D][\\s]', '')
 				def values = []
 				values =newNumbers.split('\\D')
-				int sum = 0  	
-				for(element in values) {
-					sum += element.toInteger()
-					
+				int sum = 0
+				values.each{
+					sum += it.toInteger()
 				}
 				sum
 			}else{
-				def pattern = '\n|,'
 				def values = []
-				values = numbers.split(pattern)
-				int sum = 0  	
-				for(element in values) {
-					sum += element.toInteger()
-				}
+				values = numbers.split('\n|,')
+				int sum = 0
+				values.each{
+					sum += it.toInteger()
+				}  	
 				sum
 			}
 			
