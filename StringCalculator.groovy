@@ -49,10 +49,12 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("12\n3")
 		assert res == 15
 	}
-	void testSeparateLineWithOneDelimiter(){
+	void testStringWithTwoSlashAtTheBeginningAndDifferentDelimiter(){
 		Calculator obj = new Calculator()
 		int res = obj.add("//;\n1;2")
 		assert res == 3
+		 res = obj.add("//#\n12#3")
+		assert res == 15
 	}
 	 
 }
@@ -63,8 +65,16 @@ class Calculator{
 			0
 		}else{
 			if(numbers.startsWith("//")){
-				3
-
+				def re = '\\D'	
+				def newNumbers = numbers.replaceAll('//[\\D][\\s]', '')
+				def values = []
+				values =newNumbers.split('\\D')
+				int sum = 0  	
+				for(element in values) {
+					sum += element.toInteger()
+					
+				}
+				sum
 			}else{
 				def pattern = '\n|,'
 				def values = []
