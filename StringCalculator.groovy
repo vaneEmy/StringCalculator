@@ -47,12 +47,17 @@ class stringCalculator extends GroovyTestCase{
 		res = obj.add("12\n3")
 		assert res == 15
 	}
-	void testStringWithTwoSlashAtTheBeginningAndDifferentDelimiter(){
+	void testStringHasTwoSlashAtTheBeginningAndDifferentDelimiter(){
 		Calculator obj = new Calculator()
 		int res = obj.add("//;\n1;2")
 		assert res == 3
 		 res = obj.add("//#\n12#3")
 		assert res == 15
+	}
+	void testStringHasNegativesNumbers(){
+		Calculator obj = new Calculator()
+		int res = obj.add("-1,-2,-3")
+		assert res == "Negatives not allowed -1, -2, -3"
 	}
 	 
 }
@@ -62,19 +67,17 @@ class Calculator{
 		if(!numbers){
 			0
 		}else{
+			def values = []
+			int sum = 0
 			if(numbers.startsWith("//")){
 				def newNumbers = numbers.replaceAll('//[\\D][\\s]', '')
-				def values = []
 				values =newNumbers.split('\\D')
-				int sum = 0
 				values.each{
 					sum += it.toInteger()
 				}
 				sum
 			}else{
-				def values = []
 				values = numbers.split('\n|,')
-				int sum = 0
 				values.each{
 					sum += it.toInteger()
 				}  	
