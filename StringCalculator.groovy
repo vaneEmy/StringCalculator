@@ -83,12 +83,7 @@ class Calculator{
 			def negativeNumbers = []
 			def newNumbers = numbers.replaceAll('//[\\D][\\s]|', '')
 			if(newNumbers.contains('-')){
-				def list = newNumbers.split(',')
-				list.each{
-					if(it.toInteger() < 0){
-						negativeNumbers += it
-					}
-				}
+				negativeNumbers = newNumbers.split(',').collect{it.toInteger()}.findAll{it < 0}
 				throw new Exception("Negatives not allowed ${negativeNumbers}")
 			}
 			newNumbers.split('\\D').collect {it.toInteger()}.sum()
