@@ -59,6 +59,12 @@ class stringCalculator extends GroovyTestCase{
 		int res = obj.add("-1,-2,-3")
 		assert res == "Negatives not allowed -1,-2,-3"
 	}
+	void testStringHasOneNegativeNumber(){
+		Calculator obj = new Calculator()
+		int res = obj.add("-1, 2")
+		assert res == "Negatives not allowed -1 "
+		
+	}
 }
 
 class Calculator{
