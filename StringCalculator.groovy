@@ -65,6 +65,7 @@ class stringCalculator extends GroovyTestCase{
 		assert res == "Negatives not allowed -1 "
 		
 	}
+	 
 }
 
 class Calculator{
@@ -72,34 +73,23 @@ class Calculator{
 		if(!numbers){
 			0
 		}else {
-			def values = []
 			int sum = 0
-			def flag = false
-			def list = []
-			if(numbers.startsWith("//")){
-				def newNumbers = numbers.replaceAll('//[\\D][\\s]', '')
-				values =newNumbers.split('\\D')
-				values.each{
-					sum += it.toInteger()
-				}
-				sum
-			}else{
-				values = numbers.split('\n|,')
-				values.each{
+			def negativeNumbers = []
+			def newNumbers = numbers.replaceAll('//[\\D][\\s]|', '')
+			if(newNumbers.contains('-')){
+				def list = newNumbers.split(',')
+				list.each{
 					if(it.toInteger() < 0){
-					    list += it
-						flag = true
+						negativeNumbers += it
 					}
-					sum += it.toInteger()
-				} 
-				 
-				if(flag){
-					flag = false
-					throw new Exception("Negatives not allowed ${list}")	
 				}
-				sum
-				
+				throw new Exception("Negatives not allowed ${negativeNumbers}")
 			}
+			def values = newNumbers.split('\\D')
+			values.each{
+				sum +=it.toInteger()
+			}
+			sum
 			
 		}
 
