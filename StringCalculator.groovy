@@ -91,11 +91,9 @@ class Calculator{
 				}
 				throw new Exception("Negatives not allowed ${negativeNumbers}")
 			}
-			def values = newNumbers.split('\\D')
-			values.each{
-				sum +=it.toInteger()
-			}
-			sum
+			newNumbers.split('\\D').collect {it.toInteger()}.sum()
+			
+			
 			
 		}
 
