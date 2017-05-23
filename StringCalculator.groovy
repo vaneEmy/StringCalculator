@@ -69,15 +69,30 @@ class stringCalculator extends GroovyTestCase{
 class Calculator{
 	int add (String numbers){
 		if(!numbers){
-			0
+			returnZero(numbers)
 		}else {
-			def newNumbers = numbers.replaceAll('//[\\D][\\s]|', '')
-			if(newNumbers.contains('-')){
-				def negativeNumbers = newNumbers.split(',').collect{it.toInteger()}.findAll{it < 0}
-				throw new Exception("Negatives not allowed ${negativeNumbers}")
-			}
-			newNumbers.split('\\D').collect {it.toInteger()}.sum()
+			checkNumbersInTheString(numbers)
 		}
-
 	}
+	def returnZero(numbers){
+		0
+	}
+	def checkNumbersInTheString(numbers){
+		def newNumbers = replaceFullNotationAtTheBegenningOfTheString(numbers)
+		if(newNumbers.contains('-')){
+			throw new Exception("Negatives not allowed ${splittngNegativeNumbersInTheString(newNumbers)}")
+		}
+		spllitingDelimiterBetweenNumbersAndSum(newNumbers)
+	}
+	def replaceFullNotationAtTheBegenningOfTheString(numbers){
+		numbers.replaceAll('//[\\D][\\s]|', '')
+	}
+
+	def spllitingDelimiterBetweenNumbersAndSum(newNumbers){
+		newNumbers.split('\\D').collect {it.toInteger()}.sum()
+	}
+	def splittngNegativeNumbersInTheString(newNumbers){
+		newNumbers.split(',').collect{it.toInteger()}.findAll{it < 0}
+	}
+
 }
